@@ -22,7 +22,7 @@ Ghi chú từ người dùng: $ARGUMENTS
 3. Từng module chính: đọc lướt đủ để biết vai trò và hàm vào chính.
 4. Test có sẵn, cách chạy test và lint.
 
-Dự án lớn (khoảng > 50 file code) → giao việc đọc từng thư mục cho sub-agent tìm kiếm (`scout` nếu đã có, không thì `Explore`), chỉ nhận lại tóm tắt.
+Dự án lớn (khoảng > 50 file code) → giao việc đọc từng thư mục cho `scout`, chỉ nhận lại tóm tắt.
 Không mở file secret (`.env`...) hay file dữ liệu (`*.xlsx`, `*.csv`...).
 
 ## Bước 3 – Tạo file khung còn thiếu

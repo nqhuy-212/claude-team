@@ -1,0 +1,10 @@
+#!/bin/sh
+# claude-team (global core.hooksPath): safety check on every commit, then the repo's own pre-commit hook.
+if command -v node >/dev/null 2>&1; then
+  node "{{CLAUDE_HOME}}/hooks/check-commit.mjs" --git || exit 1
+else
+  echo "claude-team: node is not on PATH, commit safety check skipped" >&2
+fi
+hook="$(git rev-parse --git-common-dir)/hooks/pre-commit"
+if [ -x "$hook" ]; then exec "$hook" "$@"; fi
+exit 0

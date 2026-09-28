@@ -1,0 +1,14 @@
+#!/bin/sh
+# claude-team (global core.hooksPath): git no longer looks in .git/hooks, so run the repo's own hook here,
+# or Git LFS for repos that use it. install.mjs copies this file under each hook name.
+name=$(basename "$0")
+hook="$(git rev-parse --git-common-dir)/hooks/$name"
+if [ -x "$hook" ]; then exec "$hook" "$@"; fi
+case "$name" in
+  pre-push|post-checkout|post-commit|post-merge)
+    if grep -qs "filter=lfs" "$(git rev-parse --show-toplevel 2>/dev/null)/.gitattributes" && command -v git-lfs >/dev/null 2>&1; then
+      exec git lfs "$name" "$@"
+    fi
+    ;;
+esac
+exit 0

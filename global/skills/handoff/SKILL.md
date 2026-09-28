@@ -25,6 +25,7 @@ Ghi chú thêm từ người dùng: $ARGUMENTS
   - Giữ file ngắn (khoảng < 60 dòng): gộp các mục "Đã xong" cũ thành một dòng cho mỗi giai đoạn.
 - Phiên này có đổi cấu trúc (thêm, xóa, đổi tên file, module, API) mà `docs/CODEMAP.md` chưa cập nhật → cập nhật.
 - Có quyết định kiến trúc mới chưa ghi → thêm vào `docs/DECISIONS.md`.
+- Phiên có gọi agent → thêm một dòng vào mục "Nhận xét đội agent" của `docs/PROGRESS.md` (tạo mục nếu chưa có): agent nào hữu ích, thừa, hoặc làm sai ở đâu. Đây là dữ liệu để đánh giá và chỉnh đội agent.
 
 ## Bước 3 – Kiểm tra trước khi commit
 - Liệt kê file sẽ commit. Dừng lại và hỏi nếu thấy: `.env*` (trừ `.env.example`), key/cert, `*.xlsx`/`*.csv`/dữ liệu thật, file lớn bất thường, hoặc thay đổi không thuộc phiên này.

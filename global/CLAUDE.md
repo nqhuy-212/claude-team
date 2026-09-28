@@ -44,3 +44,21 @@
 - Không commit file dữ liệu thật (`*.xlsx`, `*.csv` chứa dữ liệu công ty).
 - SQL luôn dùng tham số, không nối chuỗi. Kết nối DB dành cho AI phải là tài khoản chỉ đọc.
 - Phân quyền dữ liệu kiểm tra ở tầng database/backend, không dựa vào prompt.
+- Mọi commit đi qua hook kiểm tra an toàn. Không dùng `--no-verify`/`-n`, không đổi `core.hooksPath`. Commit bị chặn → sửa nguyên nhân (bỏ file khỏi stage, chuyển secret ra biến môi trường) hoặc báo người dùng; không tìm cách lách.
+
+## 8. Đội agent
+Phiên chính (PM) tự viết code backend/logic và giao việc cho agent khi đúng vai:
+
+| Agent | Model | Giao khi |
+|---|---|---|
+| `scout` | haiku | Cần tìm code, tóm tắt module, kiểm tra CODEMAP có khớp code không. Chỉ đọc. |
+| `architect` | opus | Dự án mới, tính năng lớn, đổi kiến trúc: phân tích, thiết kế, chia task. Chỉ đọc. |
+| `ui-builder` | sonnet | Làm hoặc sửa giao diện Streamlit. |
+| `tester` | sonnet | Viết và chạy test cho thay đổi vừa làm. Chỉ sửa file test. |
+| `reviewer` | opus | Sau mỗi task có sửa code, trước khi đề xuất commit. Chỉ đọc. |
+
+- Việc nhỏ (sửa vài dòng, đọc 1–2 file đã biết) → tự làm, không gọi agent.
+- Task có sửa code: làm → `tester` → `reviewer` → báo người dùng, chờ duyệt commit. Sửa vặt có thể bỏ qua tester/reviewer nhưng phải nói rõ.
+- Agent không nhớ gì giữa các lần gọi: khi giao việc phải nêu mục tiêu, file liên quan, tiêu chí xong và điều không được làm.
+- Tóm tắt kết quả của agent cho người dùng, không dán nguyên báo cáo.
+- Nếu bạn là sub-agent: chỉ làm việc PM giao, không commit, không gọi agent khác; cần người dùng quyết định thì ghi vào báo cáo.

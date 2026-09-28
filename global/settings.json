@@ -15,6 +15,18 @@
         "hooks": [
           { "type": "command", "command": "node \"{{CLAUDE_HOME}}/hooks/protect-files.mjs\"", "timeout": 10 }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "if": "Bash(git *)", "command": "node \"{{CLAUDE_HOME}}/hooks/check-commit.mjs\"", "timeout": 30 }
+        ]
+      },
+      {
+        "matcher": "PowerShell",
+        "hooks": [
+          { "type": "command", "command": "node \"{{CLAUDE_HOME}}/hooks/check-commit.mjs\"", "timeout": 30 }
+        ]
       }
     ]
   }

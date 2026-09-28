@@ -22,6 +22,7 @@ Phần 1 **chỉ anh (hoặc người hiểu nghiệp vụ) viết được**. C
 
 **(C) Mô hình CEO → PM → team không làm được đúng nghĩa đen trong Claude Code.**
 - Sub-agent **không gọi được sub-agent khác**. Chỉ phiên chính (main session) gọi được sub-agent.
+  _(Cập nhật 2026-09-28: Claude Code nay cho sub-agent gọi sub-agent, tối đa 3 tầng. Đội vẫn cố ý giữ một tầng bằng cách chặn tool `Agent` ở mọi agent.)_
 - Sub-agent **không có trí nhớ giữa các lần gọi**, và không chạy nền thường trực kiểu "nhân viên".
 - Không có agent "CEO toàn tài khoản" chạy liên tục.
 - Mỗi tầng trung gian làm **mất ngữ cảnh và tốn token gấp đôi**.
@@ -64,7 +65,7 @@ Phần 1 **chỉ anh (hoặc người hiểu nghiệp vụ) viết được**. C
 │   ├── reviewer.md       (opus)   – review code + kiểm tra phạm vi sửa + bảo mật
 │   ├── tester.md         (sonnet) – viết/chạy test
 │   ├── ui-builder.md     (sonnet) – frontend theo design system
-│   └── scout.md          (haiku)  – tìm kiếm/đọc code nhanh, cập nhật CODEMAP
+│   └── scout.md          (haiku)  – tìm kiếm/đọc code nhanh, đề xuất cập nhật CODEMAP (chỉ đọc)
 ├── skills/                      ← quy trình lặp lại: /new-project, /kickoff, /update-codemap
 └── templates/project/           ← khung dự án chuẩn
 
