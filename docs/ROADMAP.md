@@ -91,7 +91,7 @@ Chỉ tách thành nhiều agent khi đo được là 1 agent không đủ tốt
 ---
 
 ## 2b. Các quyết định đã chốt
-- **Stack mặc định: Python-centric.** Python 3.12 + `uv`, FastAPI, SQLAlchemy, pytest, ruff. Frontend dùng Streamlit cho công cụ nội bộ; chỉ chuyển sang Next.js khi thật sự cần UI đẹp (ghi lý do vào DECISIONS.md).
+- **Stack mặc định: Python-centric.** Python 3.13 + venv/pip, FastAPI, SQLAlchemy, pytest, ruff. (2026-09-28: bỏ `uv` vì máy công ty không vào được PyPI; chuẩn hóa 3.13 để dùng chung wheel offline.) Frontend dùng Streamlit cho công cụ nội bộ; chỉ chuyển sang Next.js khi thật sự cần UI đẹp (ghi lý do vào DECISIONS.md).
 - **Phạm vi: bắt đầu gọn.** Phiên chính làm PM, 5 agent lõi, chatbot MVP gồm 1 agent + tools.
 - **Nguồn dữ liệu: SQL Server + Excel/Google Sheets + ERP/Cloud DW.**
 

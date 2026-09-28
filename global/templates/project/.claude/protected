@@ -1,0 +1,6 @@
+# Vùng cấm sửa của dự án. Claude không được sửa file này; chỉ người dùng sửa.
+# Mỗi dòng một pattern, cú pháp giống .gitignore. Dòng bắt đầu bằng ! là ngoại lệ.
+# Ví dụ:
+# src/payroll/
+# migrations/**
+# !migrations/draft.sql

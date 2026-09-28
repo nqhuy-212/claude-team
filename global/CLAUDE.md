@@ -15,7 +15,7 @@
 ## 3. Tìm đúng chỗ cần sửa
 - Thứ tự đọc: `CLAUDE.md` của dự án → `docs/CODEMAP.md` → chỉ mở các file liên quan.
 - Không quét toàn bộ repo khi CODEMAP đã chỉ ra vị trí. Nếu CODEMAP sai hoặc thiếu → báo lại và cập nhật nó.
-- Đầu phiên làm việc: nếu có `docs/PROGRESS.md` thì đọc để nắm việc đang dở.
+- Đầu phiên làm việc: nếu có `docs/PROGRESS.md` thì đọc để nắm việc đang dở. Khi người dùng kết thúc phiên → nhắc chạy `/handoff`.
 
 ## 4. Quy trình mỗi task
 1. Chạy `git status`. Có thay đổi chưa commit mà không phải của task này → hỏi trước khi làm.
@@ -26,7 +26,9 @@
 6. Chỉ commit khi người dùng xác nhận. Không push, không force-push, không `reset --hard` khi chưa được yêu cầu rõ.
 
 ## 5. Stack mặc định (không tự đổi)
-- Python 3.12, quản lý bằng `uv`. Backend: FastAPI, Pydantic v2, SQLAlchemy 2. Test: pytest. Lint/format: ruff.
+- Python 3.13, môi trường `.venv` (venv + pip). Thư viện khai báo trong `requirements.txt` (chạy app) và `requirements-dev.txt` (`-r requirements.txt` + pytest, ruff), luôn pin bằng `==`.
+- `pip install` lỗi mạng → không tìm cách lách (không đổi index, không tắt kiểm tra SSL); ghi vào `docs/PROGRESS.md` gói cần tải wheel ở máy nhà.
+- Backend: FastAPI, Pydantic v2, SQLAlchemy 2. Test: pytest. Lint/format: ruff.
 - UI nội bộ: Streamlit. Chỉ dùng Next.js khi đã ghi lý do trong DECISIONS.md.
 - CSDL chính: SQL Server (pyodbc). Dữ liệu từ Excel/Sheets/ERP đi qua ETL vào schema `analytics`, không đọc trực tiếp từ app.
 - Ứng dụng AI: Anthropic Python SDK. Muốn dùng thư viện/framework ngoài danh sách → hỏi trước.

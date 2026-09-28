@@ -17,7 +17,7 @@ function backup(file) {
   if (fs.existsSync(file)) fs.copyFileSync(file, file + ".bak");
 }
 
-for (const dir of ["hooks", "agents", "skills"]) {
+for (const dir of ["hooks", "agents", "skills", "templates"]) {
   const from = path.join(SRC, dir);
   if (fs.existsSync(from)) fs.cpSync(from, path.join(HOME, dir), { recursive: true, force: true });
 }

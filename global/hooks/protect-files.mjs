@@ -8,7 +8,7 @@ const IS_WIN = process.platform === "win32";
 const EDIT_TOOLS = new Set(["Edit", "Write", "MultiEdit", "NotebookEdit"]);
 const SECRET_PATTERNS = [".env", ".env.*", "!.env.example", "*.pem", "*.pfx", "*.key"];
 const CLAUDE_HOME = path.join(os.homedir(), ".claude");
-const GLOBAL_LOCKED = ["CLAUDE.md", "settings.json", "hooks/**", "agents/**", "skills/**"];
+const GLOBAL_LOCKED = ["CLAUDE.md", "settings.json", "hooks/**", "agents/**", "skills/**", "templates/**"];
 const PROJECT_LOCKED = [".claude/protected", ".claude/settings.json", ".claude/settings.local.json"];
 
 const toPosix = (p) => p.split(path.sep).join("/");

@@ -1,0 +1,33 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+.streamlit/secrets.toml
+
+# Company data: never commit real data. Small fake samples go in tests/fixtures/.
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+*.parquet
+!tests/fixtures/**
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+wheelhouse/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# Tools
+.claude/settings.local.json
+*.bak
+.DS_Store
+Thumbs.db

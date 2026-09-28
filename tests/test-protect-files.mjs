@@ -28,6 +28,7 @@ const cases = [
   ["Write", ".claude/settings.local.json", 2],
   ["Edit", path.join(home, "settings.json"), 2],
   ["Edit", path.join(home, "hooks", "protect-files.mjs"), 2],
+  ["Write", path.join(home, "templates", "project", "CLAUDE.md"), 2],
   ["Write", path.join(home, "projects", "x", "memory", "m.md"), 0],
   ["Bash", "src/payroll/calc.py", 0],
 ];
